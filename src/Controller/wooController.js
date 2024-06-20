@@ -46,7 +46,7 @@ const GetOrders = asyncFunctionHandler(async (req, res, next) => {
     const api = await credentials(req)
     const orders = await api.get('orders', data)
 
-    res.status(200).json(orders.data)
+    res.status(200).json({status:200,message:'success',data:orders.data})
 })
 const OrderUpdate = asyncFunctionHandler(async (req, res, next) => {
     const { status ,order_id  } = req.body
@@ -55,7 +55,7 @@ const OrderUpdate = asyncFunctionHandler(async (req, res, next) => {
     const api = await credentials(req)
     const orders = await api.put('orders/'+ order_id, status)
 
-    res.status(200).json(orders.data)
+    res.status(200).json({status:200,message:'success',data:orders.data})
 })
 const productRetrive = asyncFunctionHandler(async (req, res, next) => {
     const  id  = req.body.data
@@ -63,7 +63,8 @@ const productRetrive = asyncFunctionHandler(async (req, res, next) => {
     const api = await credentials(req)
     const orders = await api.get('products/'+ id)
 
-    res.status(200).json(orders.data)
+    res.status(200).json({status:200,message:'success',data:orders.data})
+
 })
 
 const DefaultMesg = asyncFunctionHandler(async(req,res,next)=>{
