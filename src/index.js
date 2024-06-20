@@ -6,7 +6,17 @@ const PORT = 8000
 app.use(express.json())
 app.use(cors())
 
-app.route('/').get(woocommerce.GetOrders)
+app.route('/health').get(woocommerce.Health)
+app.route('/OderRetive').get(woocommerce.GetOrders)
+app.route('/OrderUpdate').get(woocommerce.OrderUpdate)
+app.route('/ProductRetive').get(woocommerce.productRetrive)
+app.route('/*').get(woocommerce.DefaultMesg)
+
+
+
+
+
+app.use(woocommerce.errorHandller)
 app.listen(PORT,()=>{
     console.log(`app is running on the port ${PORT}`)
 })
