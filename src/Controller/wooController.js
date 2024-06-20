@@ -70,7 +70,7 @@ const DefaultMesg = asyncFunctionHandler(async(req,res,next)=>{
     throw new CustomError('page not found',404)
 })
 const Health = asyncFunctionHandler(async(req,res,next)=>{
-    res.json({status:200,message:'app is Rnning properly'})
+    res.json({status:200,message:'app is Rnning properly 1'})
 })
 
 module.exports = { GetOrders, productRetrive, OrderUpdate ,DefaultMesg,errorHandller,Health}
