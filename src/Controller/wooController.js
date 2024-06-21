@@ -1,6 +1,7 @@
 const WooCommerceRestApi = require("@woocommerce/woocommerce-rest-api").default;
 const asyncFunctionHandler = require('../utils/asyncErrorHandller')
 const CustomError = require('../utils/customerror')
+const fs = require('fs')
 
 
 const proderror = (req, res, err) => {
