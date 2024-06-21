@@ -63,7 +63,6 @@ const GetOrders = asyncFunctionHandler(async (req, res, next) => {
     res.status(200).json({status:200,message:'success',data:orders.data})
 })
 const OrderUpdate = asyncFunctionHandler(async (req, res, next) => {
-    throw new Error()
     const { data ,order_id  } = req.body
     if (!order_id ) throw new CustomError('order_id  is not valid', 422)
     if (!data  ) throw new CustomError('status   is not valid', 422)
