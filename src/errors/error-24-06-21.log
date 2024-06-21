@@ -1,0 +1,17 @@
+
+    Remote ADD: Friday, June 21st 2024, 1:23:17 pm
+    URL : http://localhost:8000/OrderUpdate
+    RequestBody : {"url":"https://nipposh.com","consumerKey":"ck_1cf81d5c69f545493738585043e4b793baeb9ed2","consumer_secret":"cs_1ee21422275c4c6a44a915c03ad098621b8fc515","data":{"status":"processing"},"order_id":"263"}
+    Authorization : undefine
+    Response : Error
+    at C:\Users\Tech Team\Desktop\MERN\custom-woocommerce-api\src\Controller\wooController.js:66:11
+    at C:\Users\Tech Team\Desktop\MERN\custom-woocommerce-api\src\utils\asyncErrorHandller.js:4:9
+    at Layer.handle [as handle_request] (C:\Users\Tech Team\Desktop\MERN\custom-woocommerce-api\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\Tech Team\Desktop\MERN\custom-woocommerce-api\node_modules\express\lib\router\route.js:149:13)
+    at Route.dispatch (C:\Users\Tech Team\Desktop\MERN\custom-woocommerce-api\node_modules\express\lib\router\route.js:119:3)
+    at Layer.handle [as handle_request] (C:\Users\Tech Team\Desktop\MERN\custom-woocommerce-api\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\Tech Team\Desktop\MERN\custom-woocommerce-api\node_modules\express\lib\router\index.js:284:15
+    at Function.process_params (C:\Users\Tech Team\Desktop\MERN\custom-woocommerce-api\node_modules\express\lib\router\index.js:346:12)
+    at next (C:\Users\Tech Team\Desktop\MERN\custom-woocommerce-api\node_modules\express\lib\router\index.js:280:10)
+    at cors (C:\Users\Tech Team\Desktop\MERN\custom-woocommerce-api\node_modules\cors\lib\index.js:188:7)
+    

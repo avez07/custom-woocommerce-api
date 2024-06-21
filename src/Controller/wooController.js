@@ -3,6 +3,7 @@ const asyncFunctionHandler = require('../utils/asyncErrorHandller')
 const CustomError = require('../utils/customerror')
 const UtctoLocalString = require('../utils/common')
 const fs = require('fs')
+const path = require('path')
 
 const errorLog = (req,res,err)=>{
     return `
@@ -20,7 +21,10 @@ const proderror = (req, res, err) => {
             message: err.message,
         })
     } else {
-        fs.appendFileSync(`../errors/error-${UtctoLocalString(new Date(Date.now()), 'YY-MM-DD')}.log`, errorLog(req, res, err));
+        const logDirectory = path.join(__dirname, '..', 'errors');
+const logFileName = `error-${UtctoLocalString(new Date(Date.now()), 'YY-MM-DD')}.log`;
+const logFilePath = path.join(logDirectory, logFileName);
+        fs.appendFileSync(logFilePath, errorLog(req, res, err));
         res.status(500).json({
             status: 500,
             message: 'Something Went Wrong Try Again !',
@@ -59,6 +63,7 @@ const GetOrders = asyncFunctionHandler(async (req, res, next) => {
     res.status(200).json({status:200,message:'success',data:orders.data})
 })
 const OrderUpdate = asyncFunctionHandler(async (req, res, next) => {
+    throw new Error()
     const { data ,order_id  } = req.body
     if (!order_id ) throw new CustomError('order_id  is not valid', 422)
     if (!data  ) throw new CustomError('status   is not valid', 422)
