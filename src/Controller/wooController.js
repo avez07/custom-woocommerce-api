@@ -4,7 +4,15 @@ const CustomError = require('../utils/customerror')
 const UtctoLocalString = require('../utils/common')
 const fs = require('fs')
 
-
+const errorLog = (req,res,err)=>{
+    return `
+    Remote ADD: ${UtctoLocalString(new Date(Date.now()),'dddd, MMMM Do YYYY, h:mm:ss a')}
+    URL : ${req.protocol}://${req.get('host')}${req.originalUrl}
+    RequestBody : ${JSON.stringify(req.body)}
+    Authorization : ${req.headers['authorization']|| 'undefine'}
+    Response : ${err.stack}
+    `
+}
 const proderror = (req, res, err) => {
     if (err.isOperational) {
         res.status(err.statuscode).json({
