@@ -88,9 +88,13 @@ const GatiDoketNo = asyncFunctionHandler(async(req,res,next)=>{
    const response = await fetch('https://justi.gati.com/webservices/GKEdktdownloadjson.jsp?p1=2E9284B016FE5AF9E24789458F632CDA',{method:'GET'})
    res.status(200).json({response:response})
 })
+const GatiDoketNoTest = asyncFunctionHandler(async(req,res,next)=>{
+    const response = await fetch('https://pg-uat.gati.com/webservices/GKEdktdownloadjson.jsp?p1=2E9284B016FE5AF9E24789458F632CDA',{method:'GET'})
+    res.status(200).json({response:response})
+ })
 const Health = asyncFunctionHandler(async(req,res,next)=>{
     res.json({status:200,message:'app is Rnning properly 1'})
 })
 
-module.exports = { GetOrders, productRetrive, OrderUpdate ,DefaultMesg,errorHandller,Health,GatiDoketNo}
+module.exports = { GetOrders, productRetrive, OrderUpdate ,DefaultMesg,errorHandller,Health,GatiDoketNo,GatiDoketNoTest}
 

@@ -11,6 +11,8 @@ app.route('/OderRetive').post(woocommerce.GetOrders)
 app.route('/OrderUpdate').post(woocommerce.OrderUpdate)
 app.route('/ProductRetive').post(woocommerce.productRetrive)
 app.route('/doketNo').get(woocommerce.GatiDoketNo)
+app.route('/doketNoTest').get(woocommerce.GatiDoketNoTest)
+
 app.route('/*').get(woocommerce.DefaultMesg)
 
 
