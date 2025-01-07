@@ -146,5 +146,5 @@ const Health = asyncFunctionHandler(async (req, res, next) => {
     res.json({ status: 200, message: 'app is Rnning properly 1' })
 })
 
-module.exports = { GetOrders, productRetrive, OrderUpdate, DefaultMesg, errorHandller, Health, GatiDoketNo, GatiDoketNoTest }
+module.exports = { GetOrders, productRetrive, OrderUpdate, DefaultMesg, errorHandller, Health, GatiDoketNo, GatiDoketNoTest,GatiDoketNoTest2,GatiDoketNoTest3 }
 
