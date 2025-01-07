@@ -10,6 +10,7 @@ app.route('/health').get(woocommerce.Health)
 app.route('/OderRetive').post(woocommerce.GetOrders)
 app.route('/OrderUpdate').post(woocommerce.OrderUpdate)
 app.route('/ProductRetive').post(woocommerce.productRetrive)
+app.route('/doketNo').get(woocommerce.GatiDoketNo)
 app.route('/*').get(woocommerce.DefaultMesg)
 
 
