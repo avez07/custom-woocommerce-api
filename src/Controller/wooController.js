@@ -118,7 +118,7 @@ const GatiDoketNoTest2 = asyncFunctionHandler(async (req, res, next) => {
         }
 
         const data = await response.json(); // Extract the JSON body
-        res.status(200).json({ response: data }); // Send the extracted data
+        res.status(200).json({ source:'production',response: data }); // Send the extracted data
     } catch (error) {
         // Handle errors (e.g., network errors or response parsing issues)
         next(error); // Pass the error to the middleware
