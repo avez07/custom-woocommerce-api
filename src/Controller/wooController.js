@@ -86,7 +86,8 @@ const DefaultMesg = asyncFunctionHandler(async (req, res, next) => {
 })
 const GatiDoketNo = asyncFunctionHandler(async (req, res, next) => {
     const response = await fetch('https://justi.gati.com/webservices/GKEdktdownloadjson.jsp?p1=2E9284B016FE5AF9E24789458F632CDA', { method: 'GET' })
-    res.status(200).json({ response: response })
+    const data = await response.json()
+    res.status(200).json({ response: data })
 })
 const GatiDoketNoTest = asyncFunctionHandler(async (req, res, next) => {
     try {
