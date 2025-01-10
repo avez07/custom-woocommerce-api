@@ -2,6 +2,7 @@ const WooCommerceRestApi = require("@woocommerce/woocommerce-rest-api").default;
 const asyncFunctionHandler = require('../utils/asyncErrorHandller')
 const CustomError = require('../utils/customerror')
 const UtctoLocalString = require('../utils/common')
+const Gati = require('../Models/Gati.js')
 const fs = require('fs')
 const path = require('path')
 
@@ -89,63 +90,21 @@ const GatiDoketNo = asyncFunctionHandler(async (req, res, next) => {
     const data = await response.json()
     res.status(200).json({ response: data })
 })
-const GatiDoketNoTest = asyncFunctionHandler(async (req, res, next) => {
-    try {
-        const response = await fetch('https://pg-uat.gati.com/pickupservices/GKEdktdownloadjson.jsp?p1=2E9284B016FE5AF9E24789458F632CDA', {
-            method: 'GET',
-        });
 
-        if (!response.ok) {
-            // Handle non-2xx HTTP responses
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
+const gatiWarehouseCreation = asyncFunctionHandler(async(req,res,next)=>{
+    const row = req.body;
+    const response = await Gati.GatiWareHouse(row)
+    res.status(200).json({status:200,message:'success', data: response })
+})
+const gatiShipmentCreation = asyncFunctionHandler(async(req,res,next)=>{
+    const row = req.body;
+    const response = await Gati.shipmentCreation(row)
+    res.status(200).json({status:200,message:'success', data: response })
+})
 
-        const data = await response.json(); // Extract the JSON body
-        res.status(200).json({ response: data }); // Send the extracted data
-    } catch (error) {
-        // Handle errors (e.g., network errors or response parsing issues)
-        next(error); // Pass the error to the middleware
-    }
-});
-const GatiDoketNoTest2 = asyncFunctionHandler(async (req, res, next) => {
-    try {
-        const response = await fetch('https://justi.gati.com/webservices/GKEdktdownloadjson.jsp?p1=2E9284B016FE5AF9E24789458F632CDA', {
-            method: 'GET',
-        });
-
-        if (!response.ok) {
-            // Handle non-2xx HTTP responses
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        const data = await response.json(); // Extract the JSON body
-        res.status(200).json({ source:'production',response: data }); // Send the extracted data
-    } catch (error) {
-        // Handle errors (e.g., network errors or response parsing issues)
-        next(error); // Pass the error to the middleware
-    }
-});
-const GatiDoketNoTest3 = asyncFunctionHandler(async (req, res, next) => {
-    try {
-        const response = await fetch('https://justi.gati.com/pickupservices/GKEdktdownloadjson.jsp?p1=2E9284B016FE5AF9E24789458F632CDA', {
-            method: 'GET',
-        });
-
-        if (!response.ok) {
-            // Handle non-2xx HTTP responses
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        const data = await response.json(); // Extract the JSON body
-        res.status(200).json({ response: data }); // Send the extracted data
-    } catch (error) {
-        // Handle errors (e.g., network errors or response parsing issues)
-        next(error); // Pass the error to the middleware
-    }
-});
 const Health = asyncFunctionHandler(async (req, res, next) => {
     res.json({ status: 200, message: 'app is Rnning properly 1' })
 })
 
-module.exports = { GetOrders, productRetrive, OrderUpdate, DefaultMesg, errorHandller, Health, GatiDoketNo, GatiDoketNoTest,GatiDoketNoTest2,GatiDoketNoTest3 }
+module.exports = { GetOrders, productRetrive, OrderUpdate, DefaultMesg, errorHandller, Health, GatiDoketNo ,gatiWarehouseCreation,gatiShipmentCreation}
 
