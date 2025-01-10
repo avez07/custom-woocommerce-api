@@ -12,7 +12,7 @@ const DocketNo = ModalErrorHandller(async (encryptedCode) => {
 })
 const Pakageseries = ModalErrorHandller(async (docketNo, NoOfPack, encryptedCode, pincode) => {
     const testUrl = "https://pg-uat.gati.com/pickupservices/Custpkgseries.jsp?"
-    const ProductionUrl = "https://justi.gati.com/webservices/GKEdktdownloadjson.jsp?"
+    const ProductionUrl = "https://justi.gati.com/webservices/Custpkgseries.jsp?"
     const response = await fetch(`${ProductionUrl}p1=${docketNo}&p2=${NoOfPack}&p3=${encryptedCode}&p4=${pincode}`, { method: 'GET' })
     const data = await response.json()
 //    throw new Error('this is error')
