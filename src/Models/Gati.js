@@ -145,6 +145,6 @@ const pakageSeries = dimension.map((items,index)=>{
     // return Body;
     const Data = await response.json()
     if(!Data.reqcnt) throw new CustomError((Data.details[0].errmsg),501)
-        return Data
+        return {Data:Data,Body:Body}
 })
 module.exports = { DocketNo, Pakageseries, GatiWareHouse,shipmentCreation}

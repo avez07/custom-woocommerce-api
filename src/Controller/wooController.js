@@ -99,7 +99,7 @@ const gatiWarehouseCreation = asyncFunctionHandler(async(req,res,next)=>{
 const gatiShipmentCreation = asyncFunctionHandler(async(req,res,next)=>{
     const row = req.body;
     const response = await Gati.shipmentCreation(row)
-    res.status(200).json({status:200,message:'success', data: response })
+    res.status(200).json({status:200,message:'success', data: response.Data,body:response.Body })
 })
 
 const Health = asyncFunctionHandler(async (req, res, next) => {
