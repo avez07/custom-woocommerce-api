@@ -115,7 +115,7 @@ const pakageSeries = dimension.map((items,index)=>{
                 "receiverEmail": demail,
                 "receiverPinCode": dpincode,
                 "noOfPkgs": qty,
-                "fromPkgNo": fromPkgNo,
+                "fromPkgNo": pakageSeriesNo.frmNo,
                 "toPkgNo": toPkgNo,
                 "pkgDetails": {
                     "pkginfo": pakageSeries.flat()
