@@ -147,4 +147,19 @@ const pakageSeries = dimension.map((items,index)=>{
     if(!Data.reqcnt) throw new CustomError(JSON.stringify({Request:Body,error:(Data.details[0].errmsg)}),501)
         return {Data:Data,Body:Body}
 })
-module.exports = { DocketNo, Pakageseries, GatiWareHouse,shipmentCreation}
+const ShipmentLabel = ModalErrorHandller(async (data)=>{
+    const myHeaders = new Headers();
+   const testUrl = `https://pg-uat.gati.com/GATICOM_CUSTPKG.jsp?p1=4&p=${data}&p3=3`
+    const ProductionUrl = `https://www.gati.com/Greport/GATICOM_CUSTPKG.jsp?p1=3&p=${data}&p3=3`
+    myHeaders.append("Cookie", "JSESSIONID=C9F0AC7D5CD88B2E6BDFA13DEEC9EC93");
+    
+    const requestOptions = {
+      method: "GET",
+      headers: myHeaders,
+      redirect: "follow"
+    };
+    
+   const response = await fetch(ProductionUrl, requestOptions)
+   return  response
+})
+module.exports = { DocketNo, Pakageseries, GatiWareHouse,shipmentCreation,ShipmentLabel}

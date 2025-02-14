@@ -91,20 +91,32 @@ const GatiDoketNo = asyncFunctionHandler(async (req, res, next) => {
     res.status(200).json({ response: data })
 })
 
-const gatiWarehouseCreation = asyncFunctionHandler(async(req,res,next)=>{
+const gatiWarehouseCreation = asyncFunctionHandler(async (req, res, next) => {
     const row = req.body;
     const response = await Gati.GatiWareHouse(row)
-    res.status(200).json({status:200,message:'success', data: response })
+    res.status(200).json({ status: 200, message: 'success', data: response })
 })
-const gatiShipmentCreation = asyncFunctionHandler(async(req,res,next)=>{
+const gatiShipmentCreation = asyncFunctionHandler(async (req, res, next) => {
     const row = req.body;
     const response = await Gati.shipmentCreation(row)
-    res.status(200).json({status:200,message:'success', data: response.Data,body:response.Body })
+    res.status(200).json({ status: 200, message: 'success', data: response.Data, body: response.Body })
 })
+const gatiShipmentLabel = asyncFunctionHandler(async (req, res, next) => {
+    const awb = req.query.awb;
+    const response = await Gati.ShipmentLabel(awb)
+    // const pdfBuffer = Buffer.from(response, 'binary'); 
+    const contentType = response.headers.get('content-type');
+    const arrayBuffer = await response.arrayBuffer(); 
+    const pdfBuffer = Buffer.from(arrayBuffer);
+    res.setHeader('Content-Type', 'application/pdf');
+    res.setHeader('Content-Disposition', 'attactment; filename="shipment-label.pdf"');
+    res.status(200).send(pdfBuffer);  // Send the buffer as a PDF
+})
+
 
 const Health = asyncFunctionHandler(async (req, res, next) => {
     res.json({ status: 200, message: 'app is Rnning properly 1' })
 })
 
-module.exports = { GetOrders, productRetrive, OrderUpdate, DefaultMesg, errorHandller, Health, GatiDoketNo ,gatiWarehouseCreation,gatiShipmentCreation}
+module.exports = { GetOrders, productRetrive, OrderUpdate, DefaultMesg, errorHandller, Health, GatiDoketNo, gatiWarehouseCreation, gatiShipmentCreation, gatiShipmentLabel }
 
