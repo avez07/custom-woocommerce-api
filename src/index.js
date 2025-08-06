@@ -14,6 +14,8 @@ app.route('/doketNo').get(woocommerce.GatiDoketNo)
 app.route('/GatiWarehouseCreation').post(woocommerce.gatiWarehouseCreation)
 app.route('/ShipmentCreation').post(woocommerce.gatiShipmentCreation)
 app.route('/ShipmentLabel').get(woocommerce.gatiShipmentLabel)
+app.route('/Shipmenttracking/:awb').get(woocommerce.gatitrackingStatus)
+
 
 
 

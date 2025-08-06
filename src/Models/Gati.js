@@ -53,6 +53,23 @@ const GatiWareHouse = ModalErrorHandller(async (row) => {
     if (data?.reqcnt) return data
     throw new CustomError(JSON.stringify(data) || 'Docketno Not Found', 403)
 })
+const Gatitracking = ModalErrorHandller(async (awb) => {
+    
+    
+    // console.log(row)
+    const testUrl = "https://pg-uat.gati.com/pickupservices/GKEJCustVendDtls.jsp"
+    const ProductionUrl = `https://justi.com/pickupservices/GatiKWEDktJTrack.jsp?p1=${awb}&p2=53A0A0644DC94C25`
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    
+    const response = await fetch(`${ProductionUrl}`, {
+        method: 'GET',
+        headers:myHeaders
+
+    })
+    const data = await response.json()
+    return data
+})
 const shipmentCreation = ModalErrorHandller(async (data) => {
       const testUrl = "https://pg-uat.gati.com/pickupservices/GATIKWEJPICKUPLBH.jsp"
     const ProductionUrl = 'https://justi.gati.com/webservices/GATIKWEJPICKUPLBH.jsp'
@@ -162,4 +179,4 @@ const ShipmentLabel = ModalErrorHandller(async (data)=>{
    const response = await fetch(ProductionUrl, requestOptions)
    return  response
 })
-module.exports = { DocketNo, Pakageseries, GatiWareHouse,shipmentCreation,ShipmentLabel}
+module.exports = { DocketNo, Pakageseries, GatiWareHouse,shipmentCreation,ShipmentLabel,Gatitracking}

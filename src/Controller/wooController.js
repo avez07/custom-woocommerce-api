@@ -112,11 +112,16 @@ const gatiShipmentLabel = asyncFunctionHandler(async (req, res, next) => {
     res.setHeader('Content-Disposition', 'attactment; filename="shipment-label.pdf"');
     res.status(200).send(pdfBuffer);  // Send the buffer as a PDF
 })
+const gatitrackingStatus = asyncFunctionHandler(async (req, res, next) => {
+    const awb = req.params.awb;
+    const response = await Gati.Gatitracking(awb)
+    res.status(200).json({ status: 200, message: 'success', data: response })
+})
 
 
 const Health = asyncFunctionHandler(async (req, res, next) => {
     res.json({ status: 200, message: 'app is Rnning properly 1' })
 })
 
-module.exports = { GetOrders, productRetrive, OrderUpdate, DefaultMesg, errorHandller, Health, GatiDoketNo, gatiWarehouseCreation, gatiShipmentCreation, gatiShipmentLabel }
+module.exports = { GetOrders, productRetrive, OrderUpdate, DefaultMesg, errorHandller, Health, GatiDoketNo, gatiWarehouseCreation, gatiShipmentCreation, gatiShipmentLabel ,gatitrackingStatus}
 
