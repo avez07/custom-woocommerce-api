@@ -62,7 +62,7 @@ const Gatitracking = ModalErrorHandller(async (awb) => {
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     
-    const response = await fetch(`${ProductionUrl}`, {
+    const response = await fetch(`${testUrl}`, {
         method: 'GET',
         headers:myHeaders
 
