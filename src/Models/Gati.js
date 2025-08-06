@@ -58,7 +58,8 @@ const Gatitracking = ModalErrorHandller(async (awb) => {
     
     // console.log(row)
     const testUrl = `https://pg-uat.gati.com/pickupservices/GatiKWEDktJTrack.jsp?p1=${awb}&p2=53A0A0644DC94C25`
-    const ProductionUrl = `https://justi.gati.com/pickupservices/GatiKWEDktJTrack.jsp?p1=${awb}&p2=53A0A0644DC94C25`
+    const ProductionUrl = `https://justi.gati.com/webservices/GatiKWEDktJTrack.jsp?p1=${awb}&p2=53A0A0644DC94C25`
+    https://justi.gati.com/webservices/GatiKWEDktJTrack.jsp?p1=163127931&p2=357E89F08D4AFFE1
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     
