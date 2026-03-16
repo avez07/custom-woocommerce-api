@@ -152,6 +152,7 @@ const pakageSeries = dimension.map((items,index)=>{
             }
         ]
     }
+    console.log(Body)
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     const response = await fetch(`${ProductionUrl}`,{
