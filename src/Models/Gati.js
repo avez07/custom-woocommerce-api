@@ -161,7 +161,7 @@ const pakageSeries = dimension.map((items,index)=>{
     })
     // return Body;
     const Data = await response.json()
-    if(!Data.reqcnt) throw new CustomError(JSON.stringify({Request:Body,error:(Data.details[0].errmsg)}),501)
+    if(!Data.reqcnt) throw new CustomError(JSON.stringify({Request:Body,data:data,error:Data}),501)
         return {Data:Data,Body:Body}
 })
 const ShipmentLabel = ModalErrorHandller(async (data)=>{
