@@ -77,8 +77,10 @@ const {odId ,aipexNo ,loginId ,partner_id ,pId ,dId ,shipclassId ,qty ,
 productId ,subProductCategory ,payMode ,orderRef ,invoiceVal ,totalWeight ,consRate ,codRate ,
 extraRate ,totalRate,created_by,awbStatus,pickupStatus,orderDate ,orderTime,
 gstin_no ,hsn_code ,e_waybill ,email ,pname ,pmobileNo,pcompanyName ,paddL1 ,paddL2 ,paddL3 ,ppincode ,pcity ,
-pstate ,dname ,demail ,dmobileNo,daddL1 ,daddL2 ,daddL3 ,GatiCode,
+pstate ,dname ,demail ,dmobileNo,daddL1 ,daddL2 ,daddL3 ,GatiCode, gatiCode, gaticode,
 dpincode,dcity,dstate ,categoryName,shipclass ,dimension,warehouse,pickupDate} = data 
+const goodsCode = GatiCode ?? gatiCode ?? gaticode
+if (!goodsCode) throw new CustomError('GatiCode is required', 422)
 const encryptedCode = '2E9284B016FE5AF9E24789458F632CDA'
 const DoketNoseries = await DocketNo(encryptedCode);
 if(!DoketNoseries?.docketNo) throw new CustomError('Docket No not Found',403)
@@ -112,7 +114,7 @@ const pakageSeries = dimension.map((items,index)=>{
             {
                 "docketNo": docNo,
                 "deliveryStn": "",
-                "goodsCode": GatiCode,
+                "goodsCode": goodsCode,
                 "declCargoVal": invoiceVal,
                 "actualWt": totalWeight,
                 "chargedWt": totalWeight,
